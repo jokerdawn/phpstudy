@@ -29,11 +29,12 @@
 
     include('config.php');
 
-    $select_uid=mysqli_query($dbindex,"select uid from userdata where username = '$username' and password = '$password' limit 1 ");
+    $select_uid=mysqli_query($dbindex,"select uid,auth from userdata where username = '$username' and password = '$password' limit 1 ");
 
     if (@$result = mysqli_fetch_array($select_uid)) {
     	$_SESSION['uid'] = $result['0'];
     	$_SESSION['username'] = $username;
+        $_SESSION['auth'] = $result['1'];
     	echo "<script>alert('Welcome Back $username');location.href = 'index.php';</script>";
     }
     else {

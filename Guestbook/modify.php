@@ -10,6 +10,13 @@
 
 	session_start();
 
+	$auth = $_SESSION['auth'];
+
+	if ($auth == 1) {
+		echo "<script>alert('You don't have enough permission!');location.href ='index.php';</script>";
+		exit();
+	}
+
 	$username = $_SESSION['username'];
 
 	$comid = $_GET['select'];
@@ -19,10 +26,13 @@
 	$row = mysqli_fetch_array($select_result);
 	$content = str_replace("</br>","\r\n",$row['content']);
 
-	/*if (!($username == $row['name'])) {
-		echo "<script>alert('你无权访问！');history.back(-1);</script>";
-		exit();
-	}*/
+	if ($auth == 2) {
+		if (!($username == $row['name'])) {
+			echo "<script>alert('你无权修改他人内容！');close();</script>";
+			exit();
+		}
+	}
+	
 ?>
 
 <html>
