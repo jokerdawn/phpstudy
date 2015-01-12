@@ -78,31 +78,19 @@
 			unset($_POST);
 
 			if ($selection == 1) {
-				$sql = "select username from userdata where auth = '1'";
-				$sqlr = mysqli_query($dbindex,$sql);
-				$udata = mysqli_fetch_array($sqlr);
-				$udata_tmp = $udata['username'];
-				$sql2 = "select * from content where name = '$udata_tmp'";
-				$result = mysqli_query($dbindex,$sql2);
+				$sql = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '1'";
+				$result = mysqli_query($dbindex,$sql);
 			}
 			elseif ($selection == 2) {
-				$sql = "select username from userdata where auth = '2'";
-				$sqlr = mysqli_query($dbindex,$sql);
-				$udata = mysqli_fetch_array($sqlr);
-				$udata_tmp = $udata['username'];
-				$sql2 = "select * from content where name = '$udata_tmp'";
-				$result = mysqli_query($dbindex,$sql2);
+				$sql = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '2'";
+				$result = mysqli_query($dbindex,$sql);
 			}
 			elseif ($selection == 3) {
-				$sql = "select username from userdata where auth = '3'";
-				$sqlr = mysqli_query($dbindex,$sql);
-				$udata = mysqli_fetch_array($sqlr);
-				$udata_tmp = $udata['username'];
-				$sql2 = "select * from content where name = '$udata_tmp'";
-				$result = mysqli_query($dbindex,$sql2);
+				$sql = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '3'";
+				$result = mysqli_query($dbindex,$sql);
 			}
 			else{
-				$sql = "select * from content";
+				$sql = "SELECT * FROM content";
 				$result = mysqli_query($dbindex,$sql);
 			}
 		?>
