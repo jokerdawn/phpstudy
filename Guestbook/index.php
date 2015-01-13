@@ -63,11 +63,11 @@
 				<td>
 					<form method = 'POST'>
 						<select name="group" onchange = 'javascript:this.form.submit()'><!--id = 'myselect' onchange="javascript:getvalues(this.value)"-->
-							<option value="all" >All</option>
-							<option value="1" >新手</option>
-							<option value="2">用户</option>
-							<option value="3">管理员</option>
-						</select>
+							<option value="all" <?php if (isset($_POST['group'])||@$_POST['group']=='all') {?> selected="selected" <?php } ?> >All</option>
+							<option value="1" <?php if (@$_POST['group'] == 1) {?> selected="selected" <?php } ?> >新手</option>
+							<option value="2" <?php if (@$_POST['group'] == 2) {?> selected="selected" <?php } ?> >用户</option>
+							<option value="3" <?php if (@$_POST['group'] == 3) {?> selected="selected" <?php } ?> >管理员</option>
+						</select> 
 					</form>
 				</td>
 			</tr>
