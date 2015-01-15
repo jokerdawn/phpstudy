@@ -94,10 +94,42 @@
 				$result = mysqli_query($dbindex,$sql);
 			}
 		?>
+		
+		<?php
+			$page = isset($_GET['page'])?intval($_GET['page']):1;
+			$page_count = 5;
+			$all_page_num = mysqli_num_rows($result);
+			$pagenum = ceil($all_page_num/$page_count);
+			If($page>$pagenum || $page == 0){
+				echo "<script>alert('Error : Can Not Found The page.');location.href = 'index.php';</scripr>";
+				Exit;
+			}			
+			
+			$offset=($page-1)*$page_count;
+			
+			if ($selection == 1) {
+				$sql1 = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '1' limit $offset,$page_count";
+				$result1 = mysqli_query($dbindex,$sql1);
+			}
+			elseif ($selection == 2) {
+				$sql1 = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '2' limit $offset,$page_count";
+				$result1 = mysqli_query($dbindex,$sql1);
+			}
+			elseif ($selection == 3) {
+				$sql1 = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '3' limit $offset,$page_count";
+				$result1 = mysqli_query($dbindex,$sql1);
+			}
+			else{
+				$sql1 = "SELECT * FROM content limit $offset,$page_count";
+				$result1 = mysqli_query($dbindex,$sql1);
+			}
+		?>
+
+		
 		<form action = "modify.php" method = "GET" target="_blank"> <!--target blank new html-->
 			<p>
 				<?php
-					while($row=mysqli_fetch_array($result))
+					while($row=mysqli_fetch_array($result1))
 					{   //start
 				?>
 			</p>
@@ -124,6 +156,14 @@
 	</body>
 </html>
 
+<div align = 'center'>
+	<?php
+		For($i=1;$i<=$pagenum;$i++){
+			$show=($i!=$page)?"<a href='index.php?page=".$i."'>$i</a>":"<b>$i</b>";
+			Echo $show." ";
+		}
+	?>
+</div>
 
 <?php
 	if (isset($unlog)) {
