@@ -55,13 +55,14 @@
 	</head>
 	<body>
 		<table width="678" align="center">
-			<tr>
+			<tr align="center">
 				<td colspan="2"><h1>Gusetbook</h1></td>
 			</tr>
 			<tr>
-				<td width="586"><a href="index.php">Mainpage</a> <?php if (!isset($unlog)) { ?>| <a href = 'login.php?action=logout'>Logout</a> <?php } ?>  </td> 
+				<td width="30%"><a href="index.php">Mainpage</a> <?php if (!isset($unlog)) { ?>| <a href = 'login.php?action=logout'>Logout</a> <?php } ?>  </td> 
+				<td width="40%"><form method = 'GET' action = 'search.php' target = '_blank' style="margin-bottom: 0px;"><input name = 'search_content' type = 'TEXT' /> <input name = 'search' type = 'submit' value = '搜索' /></form></td>
 				<td>
-					<form method = 'POST'>
+					<form method = 'POST' style="margin-bottom: 0px;">
 						<select name="group" onchange = 'javascript:this.form.submit()'><!--id = 'myselect' onchange="javascript:getvalues(this.value)"-->
 							<option value="all" <?php if (isset($_POST['group'])||@$_POST['group']=='all') {?> selected="selected" <?php } ?> >All</option>
 							<option value="1" <?php if (@$_POST['group'] == 1) {?> selected="selected" <?php } ?> >新手</option>
