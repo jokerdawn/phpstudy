@@ -55,12 +55,10 @@
 	</head>
 	<body>
 		<table width="678" align="center">
-			<tr align="center">
-				<td colspan="2"><h1>Gusetbook</h1></td>
-			</tr>
-			<tr>
-				<td width="30%"><a href="index.php">Mainpage</a> <?php if (!isset($unlog)) { ?>| <a href = 'login.php?action=logout'>Logout</a> <?php } ?>  </td> 
-				<td width="40%"><form method = 'GET' action = 'search.php' target = '_blank' style="margin-bottom: 0px;"><input name = 'search_content' type = 'TEXT' /> <input name = 'search' type = 'submit' value = '搜索' /></form></td>
+			<tr align="center">	<td colspan="2"><h1>Gusetbook</h1></td></tr>
+			<tr align="center"><td colspan="2"><a href="index.php">Mainpage</a> <?php if (!isset($unlog)) { ?>| <a href = 'login.php?action=logout'>Logout</a> <?php } ?>  </td> </tr>
+			<tr>	
+				<td ><form method = 'GET' action = 'search.php' target = '_blank' style="margin-bottom: 0px;"><input name = 'search_content' type = 'TEXT' /> <input name = 'search' type = 'submit' value = '搜索' /></form></td>
 				<td>
 					<form method = 'POST' style="margin-bottom: 0px;">
 						<select name="group" onchange = 'javascript:this.form.submit()'><!--id = 'myselect' onchange="javascript:getvalues(this.value)"-->
@@ -109,15 +107,15 @@
 			$offset=($page-1)*$page_count;
 			
 			if ($selection == 1) {
-				$sql1 = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '1' limit $offset,$page_count";
+				$sql1 = "SELECT content.* FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '1' limit $offset,$page_count";
 				$result1 = mysqli_query($dbindex,$sql1);
 			}
 			elseif ($selection == 2) {
-				$sql1 = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '2' limit $offset,$page_count";
+				$sql1 = "SELECT content.* FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '2' limit $offset,$page_count";
 				$result1 = mysqli_query($dbindex,$sql1);
 			}
 			elseif ($selection == 3) {
-				$sql1 = "SELECT content.id ,Content.name, content.content FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '3' limit $offset,$page_count";
+				$sql1 = "SELECT content.* FROM content, userdata WHERE content.name = userdata.username and userdata.auth = '3' limit $offset,$page_count";
 				$result1 = mysqli_query($dbindex,$sql1);
 			}
 			else{
@@ -136,8 +134,10 @@
 			</p>
 			<table width="800" border="1" align="center" cellpadding="1" cellspacing="1" style = "border:0px;">
 				<tr>
-					<td width="25%" >Name:<br/><?php echo $row['name']; ?></td>
-					<td width="70%" >Content:<br/><?php echo $row['content']; ?></td>
+					<td width="20%" >Name:<br/><?php echo $row['name']; ?></td>
+					<td width="60%" >Content:<br/><?php echo $row['content']; ?></td>
+					<td width="10%" >发表时间:<br/><?php echo $row['postdate']; ?></td>
+					<td width="10%" >最新修改时间:<br/><?php echo $row['editdate']; ?></td>
 					<?php if (!isset($unlog)) { ?>
 						<?php if (($auth == 2)||($auth == 3)) { ?>
 							<td width="5%" style = "border:0px"><input type="radio" name="select" value = "<?php echo $row['id']; ?>"  /></td> 
