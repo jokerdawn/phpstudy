@@ -54,11 +54,25 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
-		<table width="678" align="center">
+		<table width="800" align="center">
 			<tr align="center">	<td colspan="2"><h1>Gusetbook</h1></td></tr>
-			<tr align="center"><td colspan="2"><a href="index.php">Mainpage</a> <?php if (!isset($unlog)) { ?>| <a href = 'login.php?action=logout'>Logout</a> <?php } ?>  </td> </tr>
-			<tr>	
-				<td ><form method = 'GET' action = 'search.php' target = '_blank' style="margin-bottom: 0px;"><input name = 'search_content' type = 'TEXT' /> <input name = 'search' type = 'submit' value = '搜索' /></form></td>
+			<tr>
+				<td><a href="index.php">Mainpage</a> <?php if (!isset($unlog)) { ?>| <a href = 'login.php?action=logout'>Logout</a> <?php } ?>  </td> 
+				<td >
+					<form method = 'GET' action = 'search.php' target = '_blank' style="margin-bottom: 0px;">
+						<input name = 'search_content' type = 'TEXT' /> <input name = 'search' type = 'submit' value = '搜索' />
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form method = 'GET' action = 'filter.php' target = '_blank' style="margin-bottom: 0px;">
+					<input type="radio" name="date_select" value = "1"  />发表日期
+					<input type="radio" name="date_select" value = "2"  />修改日期
+					<input name = 'start_date' type = 'TEXT' style = 'width:79px;'/>---<input name = 'end_date' type = 'TEXT' style = 'width:79px;'/>
+					<input name = 'date_submit' type = 'submit' value = '日期筛选' />
+					</form>
+				</td>
 				<td>
 					<form method = 'POST' style="margin-bottom: 0px;">
 						<select name="group" onchange = 'javascript:this.form.submit()'><!--id = 'myselect' onchange="javascript:getvalues(this.value)"-->
@@ -134,10 +148,10 @@
 			</p>
 			<table width="800" border="1" align="center" cellpadding="1" cellspacing="1" style = "border:0px;">
 				<tr>
-					<td width="20%" >Name:<br/><?php echo $row['name']; ?></td>
-					<td width="60%" >Content:<br/><?php echo $row['content']; ?></td>
-					<td width="10%" >发表时间:<br/><?php echo $row['postdate']; ?></td>
-					<td width="10%" >最新修改时间:<br/><?php echo $row['editdate']; ?></td>
+					<td width="15%" >Name:<br/><?php echo $row['name']; ?></td>
+					<td width="50%" >Content:<br/><?php echo $row['content']; ?></td>
+					<td width="15%" >发表时间:<br/><?php echo $row['postdate']; ?></td>
+					<td width="15%" >最新修改时间:<br/><?php echo $row['editdate']; ?></td>
 					<?php if (!isset($unlog)) { ?>
 						<?php if (($auth == 2)||($auth == 3)) { ?>
 							<td width="5%" style = "border:0px"><input type="radio" name="select" value = "<?php echo $row['id']; ?>"  /></td> 
