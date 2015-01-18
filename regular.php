@@ -26,7 +26,7 @@
 	
 	if (isset($_POST['email'])&&(!empty($_POST['email']))) {
 		$email = $_POST['email'];
-		if (0){
+		if (preg_match('/^[a-zA-Z]+([a-zA-Z0-9]|[.])+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)([a-zA-Z0-9]|[.])+$/',$email)){
 			echo $email.'</br>Success';
 		}
 		else {
