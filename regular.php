@@ -8,6 +8,7 @@
 	<FORM method = POST >
 		<P>Name: <input type = 'TEXT' name = 'name'>   </p>
 		<p>Email: <input type = 'TEXT' name = 'email'>    </p>
+		<p>URL: <input type = 'TEXT' name = 'URL'>  </p>
 		<p><input type = 'submit' name = 'submit' value = 'post'></p>
 </HTML>
 
@@ -31,6 +32,16 @@
 		}
 		else {
 			echo $email.'</br>Failed';
+		}
+	}
+
+	if (isset($_POST['URL'])&&(!empty($_POST['URL']))) {
+		$URL = $_POST['URL'];
+		if (preg_match("/^((http|ftp|https):\/\/)(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(\/[a-zA-Z0-9\&%_\.\/-~-]*)?$/",$URL)){
+			echo $URL.'</br>Success';
+		}
+		else {
+			echo $URL.'</br>Failed';
 		}
 	}
 

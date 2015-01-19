@@ -10,7 +10,7 @@
 	$password=$_POST['password'];
 	$email=$_POST['email'];
 
-	if(!preg_match('/^[\w\x80-\xff]{3,15}$/', $username)){
+	if(!preg_match('/^[a-zA-Z]{1}[a-zA-Z0-9]|[._-]{1,15}$/', $username)){
 	    echo "<script>alert('错误：用户名不符合规定！');history.back(-1);</script>";
 	    exit();
 	}
@@ -18,7 +18,7 @@
 	    echo "<script>alert('错误：密码长度不符合规定！');history.back(-1);</script>";
 	    exit();
 	}
-	if(!preg_match('#[a-z0-9&\-_.]+@[\w\-_]+([\w\-.]+)?\.[\w\-]+#is',$email)){
+	if(!preg_match('/^[a-zA-Z]+([a-zA-Z0-9]|[.])+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)([a-zA-Z0-9]|[.])+$/',$email)){
 	    echo "<script>alert('错误：电子邮箱格式错误！');history.back(-1);</script>";
 	    exit();
 	}
