@@ -3,6 +3,7 @@ class SimpleClass
 {
     // property declaration
     public $var = 'a default value';
+    const constant = 'const value';
 
     // method declaration
     public function displayVar() {
@@ -18,7 +19,9 @@ class ExtendClass extends SimpleClass
         echo 'Extending class<br />';
         parent::displayVar();
     }
-}
+
+    const constanted = 'Hello World';
+ }
 
 	$B = new ExtendClass;
 	$A = new SimpleClass;
@@ -27,5 +30,7 @@ class ExtendClass extends SimpleClass
 	//var_dump($A instanceof SimpleClass);
 	//var_dump($B instanceof SimpleClass);
 	$B->displayVar();
+    echo $A::constant;
+    echo $B::constanted;
 
 ?> 

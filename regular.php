@@ -9,6 +9,7 @@
 		<P>Name: <input type = 'TEXT' name = 'name'>   </p>
 		<p>Email: <input type = 'TEXT' name = 'email'>    </p>
 		<p>URL: <input type = 'TEXT' name = 'URL'>  </p>
+		<p>REPEAT: <input type = 'TEXT' name = 'REPEAT'>  </p>
 		<p><input type = 'submit' name = 'submit' value = 'post'></p>
 </HTML>
 
@@ -42,6 +43,16 @@
 		}
 		else {
 			echo $URL.'</br>Failed';
+		}
+	}
+
+	if (isset($_POST['REPEAT'])&&(!empty($_POST['REPEAT']))) {
+		$REPEAT = $_POST['REPEAT'];
+		if (preg_match("/^a.*?b$/",$REPEAT)){
+			echo $REPEAT.'</br>Success';
+		}
+		else {
+			echo $REPEAT.'</br>Failed';
 		}
 	}
 
