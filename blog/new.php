@@ -40,7 +40,7 @@
 		exit();
 	}
 
-	include("$DOCUMENT_ROOT/PHPstudy/blog/config.php");
+	include("config.php");
 
 	$title = $_POST['title'];
 	$stat = $_POST['stat'];
@@ -48,7 +48,7 @@
 	$content = str_replace("\r\n","</br>",$patch); //\r\n 代表输入时候的空格以及到下一行的光标
 	$tag = $_POST['tag'];
 	//aid aname atag astat apdate aedate
-	$sql = "INSERT INTO article_list (aname,atag,astat) value ('$title','tag','stat')";
+	$sql = "INSERT INTO article_list (aname,atag,astat) value ('$title','$tag','$stat')";
 	mysqli_query($dbindex,$sql);
 	if(!$dbindex){
 		die('Could not connect: ' . mysqli_error($dbindex));
@@ -58,4 +58,8 @@
 
 	//$file = fopen("$_SERVER['DOCUMENT_ROOT']/phpstudy/blog/page/'$getID'","w+");
 	file_put_contents("$DOCUMENT_ROOT/PHPstudy/blog/page/$getID", $content);
+
+	echo "<script>alert('发布成功！');window.location.href = 'page.php?p=$getID';close();</script>";
+
+	exit();
 ?>
