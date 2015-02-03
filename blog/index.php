@@ -15,11 +15,13 @@
 		<!--base href="http://www.w3school.com.cn/i/" />
 		<base target="_blank" />
 		<link rel="stylesheet" type="text/css" href="theme.css"/-->
-		<style></style>	
+		<!--style></style-->	
+		<link rel=stylesheet type="text/css" href="css/home-style.css">
 		<title>JD's Blog</title>
 	</head>
 	<body>
 		<h1 align = 'center' >JD's Blog</h1>
+		<div id = 'function-button' ><a href = 'new.php'>+写新文章</a></div>
 		<?php 
 			while ($result1 = mysqli_fetch_array($result))
 				{ $pid = $result1['aid'];

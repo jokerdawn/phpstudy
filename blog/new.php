@@ -6,12 +6,13 @@
 		<link rel="stylesheet" type="text/css" href="theme.css"/-->
 		<style>
 			/*<!--p:-->*/
-		</style>		
+		</style>
+		<link rel=stylesheet type="text/css" href="css/post-style.css">		
 		<title>JD's Blog</title>
 	</head>
 	<body>
 		<form method = 'POST'>
-			<table width = '100%'>
+			<!--table width = '100%'>
 				<tr>
 					<td><h1 align = 'center'><input type = 'TEXT' name = 'title'/></h1></td>
 					<td>
@@ -24,16 +25,28 @@
 				<tr><td align = 'center' colspan="2"><textarea name = 'content' rows="10" cols="30"></textarea></td></tr>
 				<tr>
 					<td><input type = 'TEXT' name = 'tag'/></td>
-					<td><input type = 'submit' name = 'submit'/></td>
+					<td></td>
 				</tr>
-			</table>
+			</table-->
+			<div id = 'page-head'>
+				<div id = 'title-input'><textarea name = 'title'/></textarea></div>
+				<div id = 'stat-select'><select name = 'stat'>
+					<option value="private">private</option>
+					<option value="public">public</option>
+				</select></div>
+			</div>
+			<div id = 'article-content'><textarea name = 'content'></textarea></div>
+			<div id = 'tag-submit'>
+				<div id = 'tag'><textarea name = 'tag'></textarea></div>
+				<div id = 'submit-button'><input type = 'submit' name = 'submit'/></div>
+			</div>
 		</form>
 	</body>
 </html>	
 
 <?php 
 	$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
-	echo $DOCUMENT_ROOT;
+	//echo $DOCUMENT_ROOT;
 
 	if(!isset($_POST['submit']))
 	{
