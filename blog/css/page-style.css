@@ -1,0 +1,18 @@
+#page-title {
+	float: none;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+#page-title h2 {
+	text-align: center;
+}
+
+#page-content,#page-date,#page-tag  {
+	margin-top: 20px;
+	margin-left: 20%;
+	margin-right: 20%;
+	font-size: 16px;
+}
+
+

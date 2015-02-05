@@ -12,22 +12,6 @@
 	</head>
 	<body>
 		<form method = 'POST'>
-			<!--table width = '100%'>
-				<tr>
-					<td><h1 align = 'center'><input type = 'TEXT' name = 'title'/></h1></td>
-					<td>
-						<select name = 'stat'>
-							<option value="private">private</option>
-							<option value="public">public</option>
-						</select>
-					</td>
-				</tr>
-				<tr><td align = 'center' colspan="2"><textarea name = 'content' rows="10" cols="30"></textarea></td></tr>
-				<tr>
-					<td><input type = 'TEXT' name = 'tag'/></td>
-					<td></td>
-				</tr>
-			</table-->
 			<div id = 'page-head'>
 				<div id = 'title-input'><textarea name = 'title'/></textarea></div>
 				<div id = 'stat-select'><select name = 'stat'>

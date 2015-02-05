@@ -43,7 +43,7 @@
 	if(mysqli_query($dbindex,$sql)){
 	    echo "<script>alert('注册成功，请登录！');location.href = 'login.html';</script>";
 	} else {
-	    echo '抱歉！添加数据失败：',mysql_error(),'<br />';
+	    echo '抱歉！添加数据失败：',mysqli_error(),'<br />';
 	    echo '点击此处 <a href="javascript:history.back(-1);">返回</a> 重试';
 	    exit();
 	}

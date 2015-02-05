@@ -1,6 +1,6 @@
 <?php
 	if((!isset($_GET['p']))||(empty($_GET['p']))){
-		echo "<script>alert('参数错误');location.href= 'main.php';close();</script>";
+		echo "<script>alert('参数错误');location.href= 'index.php';close();</script>";
 		exit();
 	}
 
@@ -24,6 +24,7 @@
 	$stat = $result1['astat'];
 	$pdate = $result1['apdate'];
 	$edate = $result1['aedate'];
+	echo $stat;
 ?>
 
 <HTML>
@@ -34,12 +35,18 @@
 		<link rel="stylesheet" type="text/css" href="theme.css"/-->
 		<style>
 			/*<!--p:-->*/
-		</style>		
+		</style>	
+		<link rel=stylesheet type="text/css" href="css/page-style.css">	
 		<title><?php echo $title.'-' ;?>JD's Blog</title>
 	</head>
 	<body>
-		<h1><?php echo $title ;?></h1></br>
-		<p><?php echo $content ;?></P></br>
-		<?php echo '标签：'.$tag.'        '.'状态：'.$stat.'</br>'.'发布时间：'.$pdate.'        '.'最后编辑时间：'.$edate ;?>
+		<div id = 'page-title'><h2><?php echo $title ;?></h2></div>
+		<div style = 'margin-left: 20%;margin-right: 20%;font-size: 16px;text-align:right'><a href = '<?php echo "modify.php?p=$pid&edit=1"?>'>+修改</a></div>
+		<div id = 'page-content'><?php echo $content ;?></div>
+		<div id = 'page-tag'><?php echo '标签：'.$tag?></div>
+		<div id = 'page-date' >
+			<div style = 'float:left'><?php echo '发布时间:'.$pdate;?></div>
+			<div style = 'float:right'><?php echo '最后编辑时间：'.$edate ;?></div>
+		</div>	
 	</body>
 </html>
