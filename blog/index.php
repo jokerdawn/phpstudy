@@ -2,11 +2,26 @@
 	$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
 	//echo $DOCUMENT_ROOT;
 
+	session_start();
+
+	if(!isset($_SESSION['name'])) {
+		$loginstat = 0;
+	}
+	else{
+		$loginstat = 1;
+		$name = $_SESSION['name'];
+	}
+
+
+
 	include("config.php");
 
 	$sql = "SELECT aname,aid from article_list";
 
 	$result = mysqli_query($dbindex,$sql);
+
+	$welcome = array('Hello','Halo','Bonjour','侬好','雷猴呀','Muraho','Buenos Dias');
+	shuffle($welcome);
 ?>
 
 <html>
@@ -21,7 +36,10 @@
 	</head>
 	<body>
 		<h1 align = 'center' >JD's Blog</h1>
-		<div id = 'function-button' ><a href = 'new.php'>+写新文章</a></div>
+		<div id = 'function-button' >
+			<div style = 'float:left'><?php if ($loginstat == 1) { echo $welcome[0].','."<a href = ''>$name</a>"; }?></div>
+			<?php if ($loginstat == 0) { ?><a href = 'login.php'>登陆</a><?php } else if ($loginstat == 1) { ?><a href = 'login.php?unlog=unlog'>注销</a><?php } ?> | <a href = 'new.php'>写新文章</a>
+		</div>
 		<?php 
 			while ($result1 = mysqli_fetch_array($result))
 				{ $pid = $result1['aid'];

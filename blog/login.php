@@ -4,24 +4,52 @@
 		<!--base href="http://www.w3school.com.cn/i/" />
 		<base target="_blank" />
 		<link rel="stylesheet" type="text/css" href="theme.css"/-->
-		<!--style></style-->	
+		<style>
+			body{
+			    margin:0;
+			    padding:0;
+			    width:100%;
+			    height:100%;
+			}
+			#login-panel {
+			   	position:absolute;
+			   	top:34%;
+			   	left:38%;
+			    width:24%;
+			    height:16%;
+			}
+			#login-panel form {
+				border: 1px solid gray;
+				padding: 20px 0px 20px 10px;
+			}
+			#login-panel input {
+				padding: 0;
+				margin:0;
+			}
+		</style>	
 		<!--link rel=stylesheet type="text/css" href="css/home-style.css"-->
 		<title>JD's Blog</title>
 	</head>
 	<body>
-		<form method = 'POST'>
-			用户名：<input type = 'text' name = 'name'></br>
-			密码：<input type = 'password' name = 'pwd'></br> 
-			<input type = 'submit' value = '登录' name = 'submit'>
-		</form>
+		<div id = 'login-panel'>
+			<form method = 'POST'>
+				<div style = 'float:right;margin-right:20%;margin-bottom:5%'>用户名：<input type = 'text' name = 'name'></div>
+				<div style = 'float:right;margin-right:20%;margin-bottom:5%'>密码：  <input type = 'password' name = 'pwd'></div>
+				<div style = 'text-align:center'><input style = 'width:50%' type = 'submit' value = '登录' name = 'submit'></div>
+			</form>
+		</div>
 	</body>
 <html>
 
 <?php 
-	//echo MD5('test123');
 	session_start();
 
 	include("config.php");
+
+	if(@$_GET['unlog'] == 'unlog'){
+		session_unset();
+		echo "<script>location.href='index.php';</script>";
+	}
 
 	if(!isset($_POST['submit'])){
 		exit();

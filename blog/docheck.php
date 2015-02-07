@@ -7,9 +7,9 @@
 	$query = mysqli_query($dbindex,$sql);
 	$row = mysqli_fetch_row($query);
 	if($row > 0 ){
-	 	echo "<font color=red>对不起，该用户名已存在</font>";
+	 	echo "<font color=red>2</font>";
 	}
 	else{
-	 	echo "<font color=green>恭喜，可以使用</font>";
+	 	echo "<font color=green>1</font>";
 	}
 ?>

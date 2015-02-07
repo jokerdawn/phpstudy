@@ -4,7 +4,35 @@
 		<!--base href="http://www.w3school.com.cn/i/" />
 		<base target="_blank" />
 		<link rel="stylesheet" type="text/css" href="theme.css"/-->
-		<!--style></style-->	
+		<style>
+			body{
+			    margin:0;
+			    padding:0;
+			    width:100%;
+			    height:100%;
+			}
+			#reg-panel {
+			   	position:absolute;
+			   	top:30%;
+			   	left:38%;
+			    width:24%;
+			    height:20%;
+			}
+			#reg-panel form {
+				border: 1px solid gray;
+				padding: 20px 0px 20px 10px;
+			}
+			#reg-panel input {
+				padding: 0;
+				margin:0;
+				
+			}
+			#reg-elem {
+				text-align: left;
+				margin-right:20%;
+				margin-bottom:3%;
+			}
+		</style>	
 		<!--link rel=stylesheet type="text/css" href="css/home-style.css"-->
 		<title>JD's Blog</title>
 		<script type="text/javascript">
@@ -38,13 +66,18 @@
 	</script>
 	</head>
 	<body>
-		<form name = 'regdata' method = 'POST'>
-			姓名：<input type = 'text' name = 'user' onblur="checkuser()"><div id ='userstat'></div></br>
-			昵称：<input type = 'text' name = 'nickname'></br>
-			密码：<input type = 'password' name = 'pwd'></br> 
-			邮箱：<input type = 'text' name = 'email' ></br>
-			<input type = 'submit' name = 'submit' value = '确定'>	<input type = 'reset' value = '重置'>
-		</form>
+		<div id ='reg-panel'>
+			<form name = 'regdata' method = 'POST'>
+				<div id = 'reg-elem' style = 'height:20px;'>
+					<div style = 'float:left'>姓名：<input type = 'text' name = 'user' onblur="checkuser()"/></div>
+					<div id ='userstat' style = 'float:right'></div>
+				</div>
+				<div id = 'reg-elem'>昵称：<input type = 'text' name = 'nickname'/></div>
+				<div id = 'reg-elem'>密码：<input type = 'password' name = 'pwd'/></div>
+				<div id = 'reg-elem'>邮箱：<input type = 'text' name = 'email' /></div>
+				<div style = 'text-align:center'><input style = 'width:25%' type = 'submit' name = 'submit' value = '确定'/>	<input style = 'width:25%' type = 'reset' value = '重置'/></div>
+			</form>
+		</div>
 	</body>
 <html>
 
