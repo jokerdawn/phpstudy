@@ -27,6 +27,8 @@
 				margin:0;
 			}
 		</style>	
+		<script type="text/javascript">
+		</script>
 		<!--link rel=stylesheet type="text/css" href="css/home-style.css"-->
 		<title>JD's Blog</title>
 	</head>
@@ -35,7 +37,10 @@
 			<form method = 'POST'>
 				<div style = 'float:right;margin-right:20%;margin-bottom:5%'>用户名：<input type = 'text' name = 'name'></div>
 				<div style = 'float:right;margin-right:20%;margin-bottom:5%'>密码：  <input type = 'password' name = 'pwd'></div>
-				<div style = 'text-align:center'><input style = 'width:50%' type = 'submit' value = '登录' name = 'submit'></div>
+				<div style = 'text-align:center'>
+					<input style = 'width:25%' type = 'submit' value = '登录' name = 'submit'>
+					<button style = 'width:25%;padding:0;' type = 'button' name = 'reg' onclick = "location.href='reg.php';">注册</button>
+				</div>
 			</form>
 		</div>
 	</body>

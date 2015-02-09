@@ -14,8 +14,8 @@
 			#reg-panel {
 			   	position:absolute;
 			   	top:30%;
-			   	left:38%;
-			    width:24%;
+			   	left:32%;
+			    width:36%;
 			    height:20%;
 			}
 			#reg-panel form {
@@ -29,7 +29,7 @@
 			}
 			#reg-elem {
 				text-align: left;
-				margin-right:20%;
+				margin-right:10%;
 				margin-bottom:3%;
 			}
 		</style>	
@@ -52,15 +52,39 @@
 			
 			function checkuser(){
 				var user= document.regdata.user.value;
-				var url = "doCheck.php?user="+user;                       //跳转路径
+				var url = "doCheck.php?meta=user&value="+user;                       //跳转路径
 				req.open("GET",url,true);                                 //跳转
-				req.onreadystatechange = checkResult;                     //设置回调函数为checkResult
+				req.onreadystatechange = function(){checkResult('id_user')};   //设置回调函数为checkResult
+				req.send();                                               //将请求发送
+			}
+
+			function checknickname(){
+				var nickname= document.regdata.nickname.value;
+				var url = "doCheck.php?meta=nickname&value="+nickname;                       //跳转路径
+				req.open("GET",url,true);                                 //跳转
+				req.onreadystatechange = function(){checkResult('id_nickname')};  //设置回调函数为checkResult
+				req.send();                                               //将请求发送
+			}
+
+			function checkpwd(){
+				var pwd= document.regdata.pwd.value;
+				var url = "doCheck.php?meta=pwd&value="+pwd;                       //跳转路径
+				req.open("GET",url,true);                                 //跳转
+				req.onreadystatechange = function(){checkResult('id_pwd')};   //设置回调函数为checkResult
+				req.send();                                               //将请求发送
+			}
+
+			function checkemail(){
+				var email= document.regdata.email.value;
+				var url = "doCheck.php?meta=email&value="+email;                       //跳转路径
+				req.open("GET",url,true);                                 //跳转
+				req.onreadystatechange = function(){checkResult('id_email')};       //设置回调函数为checkResult
 				req.send();                                               //将请求发送
 			}
 			
-			function checkResult(){
-				if(req.readyState == 4){                                  //判断XMLHtppRquest状态
-					document.getElementById('userstat').innerHTML = req.responseText;//在div标签中显示相应返回值
+			function checkResult(elem){
+				if(req.readyState == 4){  //判断XMLHtppRquest状态
+		     		document.getElementById(elem).innerHTML = req.responseText;//在div标签中显示相应返回值                       					
 				}
 			}
 	</script>
@@ -70,11 +94,20 @@
 			<form name = 'regdata' method = 'POST'>
 				<div id = 'reg-elem' style = 'height:20px;'>
 					<div style = 'float:left'>姓名：<input type = 'text' name = 'user' onblur="checkuser()"/></div>
-					<div id ='userstat' style = 'float:right'></div>
+					<div id ='id_user' style = 'float:right'></div>
 				</div>
-				<div id = 'reg-elem'>昵称：<input type = 'text' name = 'nickname'/></div>
-				<div id = 'reg-elem'>密码：<input type = 'password' name = 'pwd'/></div>
-				<div id = 'reg-elem'>邮箱：<input type = 'text' name = 'email' /></div>
+				<div id = 'reg-elem' style = 'height:20px;'>
+					<div style = 'float:left'>昵称：<input type = 'text' name = 'nickname' onblur="checknickname()"/></div>
+					<div id ='id_nickname' style = 'float:right'></div>
+				</div>
+				<div id = 'reg-elem' style = 'height:20px;'>
+					<div style = 'float:left'>密码：<input type = 'password' name = 'pwd' onblur="checkpwd()"/></div>
+					<div id ='id_pwd' style = 'float:right'></div>
+				</div>
+				<div id = 'reg-elem' style = 'height:20px;'>
+					<div style = 'float:left'>邮箱：<input type = 'text' name = 'email' onblur="checkemail()"/></div>
+					<div id ='id_email' style = 'float:right'></div>
+				</div>					
 				<div style = 'text-align:center'><input style = 'width:25%' type = 'submit' name = 'submit' value = '确定'/>	<input style = 'width:25%' type = 'reset' value = '重置'/></div>
 			</form>
 		</div>

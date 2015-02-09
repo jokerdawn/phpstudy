@@ -32,6 +32,9 @@
 	$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
 	//echo $DOCUMENT_ROOT;
 
+	session_start();
+
+
 	if(!isset($_POST['submit']))
 	{
 		exit();
@@ -39,13 +42,14 @@
 
 	include("config.php");
 
+	$nickname = $_SESSION['nickname'];
 	$title = $_POST['title'];
 	$stat = $_POST['stat'];
 	$patch = $_POST['content'];
 	$content = str_replace("\r\n","</br>",$patch); //\r\n 代表输入时候的空格以及到下一行的光标
 	$tag = $_POST['tag'];
 	//aid aname atag astat apdate aedate
-	$sql = "INSERT INTO article_list (aname,atag,astat) value ('$title','$tag','$stat')";
+	$sql = "INSERT INTO article_list (aname,atag,astat,author) value ('$title','$tag','$stat','$nickname')";
 	mysqli_query($dbindex,$sql);
 	if(!$dbindex){
 		die('Could not connect: ' . mysqli_error($dbindex));
