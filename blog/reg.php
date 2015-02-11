@@ -49,13 +49,14 @@
 			}
 
 			var req = createXMLHttp();                                    //定义XMLHttpRequest变量
-			
+			submit_stat = new Array();
+
 			function checkuser(){
 				var user= document.regdata.user.value;
 				var url = "doCheck.php?meta=user&value="+user;                       //跳转路径
 				req.open("GET",url,true);                                 //跳转
 				req.onreadystatechange = function(){checkResult('id_user')};   //设置回调函数为checkResult
-				req.send();                                               //将请求发送
+				req.send();                                      //将请求发送
 			}
 
 			function checknickname(){
@@ -83,17 +84,39 @@
 			}
 			
 			function checkResult(elem){
-				if(req.readyState == 4){  //判断XMLHtppRquest状态
+
+				if(req.readyState == 4){ //判断XMLHtppRquest状态
+
+					var div_id = req.responseText;
+					var submit_value = document.getElementsByName('submit');
+				
+					if(div_id.match("green")){
+						//submit_value[0].disabled = '';
+						submit_stat[elem] = 1;
+					}
+
+					if(submit_stat['id_user']&&submit_stat['id_nickname']&&submit_stat['id_pwd']&&
+						submit_stat['id_email']) {
+						submit_value[0].disabled = '';
+					}else {
+						submit_value[0].disabled = 'disabled';
+					}
+
 		     		document.getElementById(elem).innerHTML = req.responseText;//在div标签中显示相应返回值                       					
 				}
+
 			}
-	</script>
+
+			function check_en(elem){
+
+			}	
+		</script>
 	</head>
 	<body>
 		<div id ='reg-panel'>
 			<form name = 'regdata' method = 'POST'>
 				<div id = 'reg-elem' style = 'height:20px;'>
-					<div style = 'float:left'>姓名：<input type = 'text' name = 'user' onblur="checkuser()"/></div>
+					<div style = 'float:left'>姓名：<input type = 'text' name = 'user' onblur="checkuser();"/></div>
 					<div id ='id_user' style = 'float:right'></div>
 				</div>
 				<div id = 'reg-elem' style = 'height:20px;'>
@@ -108,7 +131,7 @@
 					<div style = 'float:left'>邮箱：<input type = 'text' name = 'email' onblur="checkemail()"/></div>
 					<div id ='id_email' style = 'float:right'></div>
 				</div>					
-				<div style = 'text-align:center'><input style = 'width:25%' type = 'submit' name = 'submit' value = '确定'/>	<input style = 'width:25%' type = 'reset' value = '重置'/></div>
+				<div style = 'text-align:center'><input style = 'width:25%' type = 'submit' name = 'submit' value = '确定' disabled = "disabled" />	<input style = 'width:25%' type = 'reset' value = '重置'/></div>
 			</form>
 		</div>
 	</body>
@@ -142,7 +165,7 @@
 	    exit();
 	}
 
-	include('config.php');
+	@include('config.php'); //消除头文件错误
 
 	$password = MD5($password);
 

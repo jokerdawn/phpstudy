@@ -29,7 +29,7 @@
 		$user = $a;
 		
 		if(!preg_match('/^[a-zA-Z]{1}[a-zA-Z0-9]|[._-]{2,15}$/', $user)){
-		    echo '<font color="red">不符合命名规则</font>';
+		    echo "<font color='red'>不符合命名规则</font>"; 
 		    exit();
 		}
 
