@@ -32,12 +32,13 @@
 		<link rel="stylesheet" type="text/css" href="theme.css"/-->
 		<!--style></style-->	
 		<link rel=stylesheet type="text/css" href="css/home-style.css">
+		<link rel=stylesheet type="text/css" href="css/common.css">
 		<title>JD's Blog</title>
 	</head>
 	<body>
 		<h1 align = 'center' >JD's Blog</h1>
 		<div id = 'function-button' >
-			<div style = 'float:left'><?php if ($loginstat == 1) { echo $welcome[0].','."<a href = ''>$name</a>"; }?></div>
+			<div style = 'float:left'><?php if ($loginstat == 1) { echo $welcome[0].','."<a href = 'user.php'>$name</a>"; }?></div>
 			<?php if ($loginstat == 0) { ?><a href = 'login.php'>登陆</a><?php } else if ($loginstat == 1) { ?><a href = 'login.php?unlog=unlog'>注销</a><?php } ?> | <a href = 'new.php'>写新文章</a>
 		</div>
 		<?php 

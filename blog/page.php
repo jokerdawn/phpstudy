@@ -37,6 +37,7 @@
 			/*<!--p:-->*/
 		</style>	
 		<link rel=stylesheet type="text/css" href="css/page-style.css">	
+		<link rel=stylesheet type="text/css" href="css/common.css">
 		<title><?php echo $title.'-' ;?>JD's Blog</title>
 	</head>
 	<body>

@@ -49,6 +49,11 @@
 		include("config.php");
 		$nickname = $a;
 
+		if(strlen($nickname) < 3){
+		    echo "<font color = 'red'>昵称太短</font>";
+		    exit();
+		}
+
 		$sql = "SELECT * FROM userdata WHERE nickname = '$nickname'";
 		$query = mysqli_query($dbindex,$sql);
 		$row = mysqli_fetch_row($query);

@@ -32,7 +32,8 @@
 				margin-right:10%;
 				margin-bottom:3%;
 			}
-		</style>	
+		</style>
+		<link rel=stylesheet type="text/css" href="css/common.css">	
 		<!--link rel=stylesheet type="text/css" href="css/home-style.css"-->
 		<title>JD's Blog</title>
 		<script type="text/javascript">
@@ -72,7 +73,7 @@
 				var url = "doCheck.php?meta=pwd&value="+pwd;                       //跳转路径
 				req.open("GET",url,true);                                 //跳转
 				req.onreadystatechange = function(){checkResult('id_pwd')};   //设置回调函数为checkResult
-				req.send();                                               //将请求发送
+				req.send();  //将请求发送                                      
 			}
 
 			function checkemail(){
@@ -93,6 +94,8 @@
 					if(div_id.match("green")){
 						//submit_value[0].disabled = '';
 						submit_stat[elem] = 1;
+					}else {
+						submit_stat[elem] = 0;
 					}
 
 					if(submit_stat['id_user']&&submit_stat['id_nickname']&&submit_stat['id_pwd']&&
@@ -104,10 +107,6 @@
 
 		     		document.getElementById(elem).innerHTML = req.responseText;//在div标签中显示相应返回值                       					
 				}
-
-			}
-
-			function check_en(elem){
 
 			}	
 		</script>
@@ -152,7 +151,7 @@
 	@$email=$_POST['email'];
 	@$nickname=$_POST['nickname'];
 
-	if(!preg_match('/^[a-zA-Z]{1}[a-zA-Z0-9]|[._-]{1,15}$/', $username)){
+/*	if(!preg_match('/^[a-zA-Z]{1}[a-zA-Z0-9]|[._-]{1,15}$/', $username)){
 	    echo "<script>alert('错误：用户名不符合规定！');history.back(-1);</script>";
 	    exit();
 	}
@@ -163,7 +162,7 @@
 	if(!preg_match('/^[a-zA-Z]+([a-zA-Z0-9]|[.])+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)([a-zA-Z0-9]|[.])+$/',$email)){
 	    echo "<script>alert('错误：电子邮箱格式错误！');history.back(-1);</script>";
 	    exit();
-	}
+	}*/
 
 	@include('config.php'); //消除头文件错误
 

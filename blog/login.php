@@ -29,7 +29,7 @@
 		</style>	
 		<script type="text/javascript">
 		</script>
-		<!--link rel=stylesheet type="text/css" href="css/home-style.css"-->
+		<link rel=stylesheet type="text/css" href="css/common.css">
 		<title>JD's Blog</title>
 	</head>
 	<body>
