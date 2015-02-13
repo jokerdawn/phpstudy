@@ -42,7 +42,7 @@
 			}
 			#container {
 			   	position:absolute;
-			   	top:15%;
+			   	top:12%;
 			   	left:22%;
 			    width:56%;
 			}
@@ -84,7 +84,12 @@
 		<link rel=stylesheet type="text/css" href="css/common.css">
 	</head>
 	<body>
+
 		<div id = 'container'>
+			<div style="text-align:right;">
+				<div style="float:left"><a href = 'index.php'>主页|</a><a href = 'login.php?unlog=unlog'>注销</a></div>
+				<div><a href = 'new.php'>写新文章</a></div>
+			</div>	
 			<div id = 'head'>
 				<div id = 'avatar'><img src="images/avatar.jpg" style = 'height:100px;width:100px;'/></div>
 				<div id = 'user-info'>

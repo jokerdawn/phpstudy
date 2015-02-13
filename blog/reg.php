@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if(isset($_SESSION['uid'])) {
+		$name = $_SESSION['name'];
+		echo "<script>alert('用户 $name 您已经登录了，按确定返回主页');window.location.href = 'index.php';close();</script>";
+		exit();
+	}
+?>
+
+
 <html>
 	<HEAD>
 		<META http-equiv="charset" content="UTF-8"/>
@@ -130,7 +140,10 @@
 					<div style = 'float:left'>邮箱：<input type = 'text' name = 'email' onblur="checkemail()"/></div>
 					<div id ='id_email' style = 'float:right'></div>
 				</div>					
-				<div style = 'text-align:center'><input style = 'width:25%' type = 'submit' name = 'submit' value = '确定' disabled = "disabled" />	<input style = 'width:25%' type = 'reset' value = '重置'/></div>
+				<div style = 'text-align:center'>
+					<input style = 'width:25%' type = 'submit' name = 'submit' value = '确定' disabled = "disabled" />	
+					<button style = 'width:25%;padding:0;' type = 'button' name = 'login' onclick = "location.href='login.php';">登录</button>
+				</div>
 			</form>
 		</div>
 	</body>
