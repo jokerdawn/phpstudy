@@ -25,7 +25,7 @@
 	echo '用户权限'.$auth.'<br />';*/
 
 	$user_query = mysqli_query($dbindex,"SELECT regdate from userdata where uid=$userid limit 1");
-	$row = mysqli_fetch_array($user_query);
+	@$row = mysqli_fetch_array($user_query);
 	//echo '注册日期：'.date("Y年n月j日",strtotime($row['regdate'])).'<br />'; //strtotime — 将任何英文文本的日期时间描述解析为 Unix 时间戳
 	//echo "<a href = 'index.php'>首页</a>          "."       <a href='login.php?action=logout'>注销</a>";
 ?>

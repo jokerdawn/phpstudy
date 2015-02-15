@@ -4,16 +4,8 @@
 
 	session_start();
 
-	if(!isset($_SESSION['name'])) {
-		$loginstat = 0;
-	}
-	else{
-		$loginstat = 1;
-		$name = $_SESSION['name'];
-	}
-
-
-
+	include('toolbar.php');
+	
 	include("config.php");
 
 	$sql = "SELECT aname,aid from article_list";
