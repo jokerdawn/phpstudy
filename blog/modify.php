@@ -1,6 +1,13 @@
 <?php
 	if(empty($_GET['p'])||$_GET['edit'] != 1){
-		echo "<script>alert('参数错误！');close();";
+		echo "<script>alert('参数错误！');window.location.href = 'index.php';close();</script>";
+		exit();
+	}
+
+	include('toolbar.php');
+
+	if($loginstat != 1) {
+		echo "<script>alert('请登录！');window.location.href = 'login.php';close();</script>";
 		exit();
 	}
 

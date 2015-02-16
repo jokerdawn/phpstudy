@@ -2,8 +2,8 @@
 	<head>
 		<style>
 			#footer {
-				margin:10 0 0 0;
-				position: absolute;
+				margin:30 0 0 0;
+				position: relative;
 				bottom: 0;
 				padding:30 0 30 0;
 				width:100%;

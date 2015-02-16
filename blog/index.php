@@ -24,7 +24,7 @@
 		<title>JD's Blog</title>
 	</head>	
 	<body>
-		<div <!--style = 'min-height:100%;position: relative;'-->>
+		<div >
 		<h1 align = 'center' >JD's Blog</h1>
 		<?php 
 			while ($result1 = mysqli_fetch_array($result))
