@@ -20,6 +20,7 @@
 			body {
 				margin:0;
 				padding:0;
+				height:100%;
 			}
 			#function-button.toolbar {
 				height: 36px;

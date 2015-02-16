@@ -59,28 +59,24 @@
 </html>	
 
 <?php 
-	$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
-	//echo $DOCUMENT_ROOT;
 
 	if(!isset($_POST['submit']))
 	{
 		exit();
 	}
 
-	include("config.php");
-
-	$etitle = $_POST['title'];
-	$estat = $_POST['stat'];
+	$etitle = htmlspecialchars($_POST['title'],ENT_QUOTES);
+	$estat = htmlspecialchars($_POST['stat'],ENT_QUOTES);
 	$epatch = $_POST['content'];
 	$econtent = str_replace("\r\n","</br>",$epatch); //\r\n 代表输入时候的空格以及到下一行的光标
-	$etag = $_POST['tag'];
+	$etag = htmlspecialchars($_POST['tag'],ENT_QUOTES);
 	//aid aname atag astat apdate aedate
 	$sql = "UPDATE article_list SET aname = '$etitle' ,atag = '$etag' ,astat = '$estat' where aid = '$pid'";
 	mysqli_query($dbindex,$sql);
+
 	if(!$dbindex){
 		die(mysqli_error($dbindex));
 	}
-
 	//$file = fopen("$_SERVER['DOCUMENT_ROOT']/phpstudy/blog/page/'$getID'","w+");
 	file_put_contents("$DOCUMENT_ROOT/PHPstudy/blog/page/$pid", $econtent);
 

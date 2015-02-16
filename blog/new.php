@@ -44,11 +44,11 @@
 	include("config.php");
 
 	$nickname = $_SESSION['nickname'];
-	$title = $_POST['title'];
-	$stat = $_POST['stat'];
+	$title = htmlspecialchars($_POST['title'],ENT_QUOTES);
+	$stat = htmlspecialchars($_POST['stat'],ENT_QUOTES);
 	$patch = $_POST['content'];
 	$content = str_replace("\r\n","</br>",$patch); //\r\n 代表输入时候的空格以及到下一行的光标
-	$tag = $_POST['tag'];
+	$tag = htmlspecialchars($_POST['tag'],ENT_QUOTES);
 	//aid aname atag astat apdate aedate
 	$sql = "INSERT INTO article_list (aname,atag,astat,author) value ('$title','$tag','$stat','$nickname')";
 	mysqli_query($dbindex,$sql);

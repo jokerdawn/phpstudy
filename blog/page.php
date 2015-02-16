@@ -42,7 +42,7 @@
 
 			#article {
 				width:70%;
-				border: 1px solid black;
+				border: 1px solid rgba(0,0,0,0);
 			}
 
 			#page-title {
@@ -51,6 +51,10 @@
 
 			#author {
 				font-size: 18px;
+			}
+			
+			#page-content {
+				margin:15 0 15 0;
 			}
 
 		</style>
@@ -62,14 +66,12 @@
 			<div id = 'article' >
 				<div id = 'page-title'><h2><?php echo $title.'	' ; if($stat == 'private') {echo '<img style = "width:18px;" src="images/private.png"/>';}?></h2></div>
 				<div style = 'height:21px;'>	
-					<div id = 'author' style = 'float:left'><img style = 'width:21px;' src="images/avatar.jpg"/><?php echo $author.'	'.$pdate;?></div>
+					<div id = 'author' style = 'float:left'><img style = 'width:18px;' src="images/avatar.jpg"/><?php echo $author.'	'.$pdate;?></div>
 					<div style = 'text-align:right'><a href = '<?php echo "modify.php?p=$pid&edit=1"?>'><img style = 'width:18px;' src="images/edit.png"/></a></div>
 				</div>
 				<div id = 'page-content'><?php echo $content ;?></div>
 				<div id = 'page-tag'><?php echo '标签：'.$tag?></div>
-				<div id = 'page-date' >
-					<div style = 'float:right'><?php echo '最后编辑时间：'.$edate ;?></div>
-				</div>
+				<div id = 'page-date' ><?php echo '最后编辑时间：'.$edate ;?></div>
 			</div>
 			<div id = 'sidebar'></div>
 		</div>	
