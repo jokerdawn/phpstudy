@@ -1,5 +1,5 @@
 <?php
-class SimpleClass
+/* class SimpleClass
 {
     // property declaration
     public $var = 'a default value';
@@ -31,6 +31,34 @@ class ExtendClass extends SimpleClass
 	//var_dump($B instanceof SimpleClass);
 	$B->displayVar();
     echo $A::constant;
-    echo $B::constanted;
+    echo $B::constanted; */
+	
+class Test
+{
+    private $foo;
+  
+    public function __construct($foo)
+    {
+        $this->foo = $foo;
+		
+    }
+    private function bar()
+    {
+        echo 'Accessed the private method.';
+    }
+    public function baz(Test $other)
+    {	
+		var_dump($this);
+		var_dump($other->foo);
+		$this->bar();
+        // We can change the private property:
+        $other->foo = 'hello';
+        var_dump($other->foo);
+        // We can also call the private method:
+        $other->bar();
+    }
+}
+$test = new Test();
+$test->baz(new Test());
 
-?> 
+?>
