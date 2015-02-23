@@ -47,7 +47,7 @@
 
 			#article {
 				width:65%;
-				border: 1px solid rgba(0,0,0,1);
+				border: 1px solid rgba(0,0,0,0);
 			}
 
 			#page-title {
@@ -65,7 +65,7 @@
 			#sidebar {
 				width :30%;
 				height: 400px;
-				border: 1px solid rgba(0,0,0,1);
+				border: 1px solid rgba(0,0,0,0);
 				float:right;
 				background-color: rgba(157, 231, 98, 0.38);
 			}
@@ -75,7 +75,7 @@
 			}
 
 			.page-list {
-				padding: 10 0 10 0;
+				padding: 10 10 10 0;
 			}
 
 		</style>

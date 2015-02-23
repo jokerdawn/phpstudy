@@ -54,7 +54,7 @@
 				?><button onclick= "location.href = 'login.php?unlog=unlog'">注销</button><button onclick = "location.href = 'new.php'">写新文章</button><?php
 			} ?>
 			<?php if ($loginstat == 1) { 
-				?><button style = 'float:right' onclick = 'user.php'><?php echo $name;?></button>
+				?><button style = 'float:right' onclick = "location.href = 'user.php'"><?php echo $name;?></button>
 				<img style = 'float:right;width:30px;padding-top:3px;' src="images/avatar.jpg"/><?php 
 			}?>
 		</div>
