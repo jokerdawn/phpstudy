@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<title>富文本编辑器-轮子</title>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+		function transfer1(){
+			var orgtext = document.getElementById('origin').value;
+			document.getElementById("real").contentDocument.write(orgtext);
+		}
+		function transfer2(){
+			var realtext = document.getElementById("real").contentDocument.getElementsByTagName('body')[0].innerHTML;
+			document.getElementById('origin').value = realtext;
+		}
+		</script>
+ 	</head>
+ 	<body>
+	 	<div>
+	 		<div style = 'float:right'>
+				<iframe frameborder="1" srcdoc = '' style="height: 330px;" id = 'real' ></iframe>
+				<button onclick="transfer2();">转换2</button>
+			</div>
+			<div>
+				<textarea id ='origin' style = 'width:400px;height:400px'></textarea>
+				<button onclick="transfer1();">转换1</button>
+			</div>
+		</div>
+ 	</body>
+ 	<script>
+			var ifr = document.getElementsByTagName("iframe")[0];
+			setTimeout(function(){
+				ifr.contentWindow.document.designMode = "On";
+				ifr.contentWindow.focus();
+			}, 10)			
+	</script>	
+</html>

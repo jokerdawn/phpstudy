@@ -15,10 +15,12 @@
 		<form method = 'POST'>
 			<div id = 'page-head'>
 				<div id = 'title-input'><textarea name = 'title'/></textarea></div>
-				<div id = 'stat-select'><select name = 'stat'>
-					<option value="private">private</option>
-					<option value="public">public</option>
-				</select></div>
+				<div id = 'stat-select'>
+					<select name = 'stat'>
+						<option value="private">private</option>
+						<option value="public">public</option>
+					</select>
+				</div>
 			</div>
 			<div id = 'article-content'><textarea name = 'content'></textarea></div>
 			<div id = 'tag-submit'>

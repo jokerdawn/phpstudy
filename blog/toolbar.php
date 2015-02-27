@@ -22,6 +22,9 @@
 				padding:0;
 				height:100%;
 			}
+			#container{   /*添加toolbar，都需要定义Container*/
+				height: 90%;
+			}
 			#function-button.toolbar {
 				height: 36px;
 				position: relative;

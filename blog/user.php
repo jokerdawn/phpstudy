@@ -1,6 +1,7 @@
 
 <?php
-	session_start();
+	include('toolbar.php');	
+
 	//检测是否登录，若没登录则转向登录界面
 	if(!isset($_SESSION['uid'])){
 	    header("Location:login.html");
@@ -41,10 +42,11 @@
 			    height:100%;
 			}
 			#container {
-			   	position:absolute;
+			   	position:relative;
 			   	top:12%;
 			   	left:22%;
 			    width:56%;
+			    height: 90%;
 			}
 			#head {
 				border: 1px solid black;
@@ -123,5 +125,6 @@
 				<?php } ?>
 			</div>
 		</div>
+		<?php include('footer.php') ?>
 	</body>
 </HTML>
