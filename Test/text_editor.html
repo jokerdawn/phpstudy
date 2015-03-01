@@ -6,11 +6,27 @@
 		<script type="text/javascript">
 		function transfer1(){
 			var orgtext = document.getElementById('origin').value;
+			document.getElementById("real").contentWindow.document.body.innerText = ""; //清空原内容
 			document.getElementById("real").contentDocument.write(orgtext);
 		}
 		function transfer2(){
 			var realtext = document.getElementById("real").contentDocument.getElementsByTagName('body')[0].innerHTML;
 			document.getElementById('origin').value = realtext;
+		}
+		function addtag(tstart,tend){
+			var textarea = document.getElementById('origin');
+			
+			if(textarea.setSelectionRange){
+				var rangeData = {text: "", start: 0, end: 0 };
+				var tValue = textarea.value
+
+				textarea.focus();
+				rangeData.start= textarea.selectionStart;
+				rangeData.end = textarea.selectionEnd;
+				rangeData.text = (rangeData.start != rangeData.end) ? textarea.value.substring(rangeData.start, rangeData.end): "";
+
+				textarea.value = tValue.substring(0, rangeData.start)+tstart+tValue.substring(rangeData.start,rangeData.end)+tend+tValue.substring(rangeData.end);
+			}
 		}
 		</script>
  	</head>
@@ -23,6 +39,7 @@
 			<div>
 				<textarea id ='origin' style = 'width:400px;height:400px'></textarea>
 				<button onclick="transfer1();">转换1</button>
+				<button onclick="addtag('<i>','</i>');">斜体</button>
 			</div>
 		</div>
  	</body>
@@ -30,7 +47,7 @@
 			var ifr = document.getElementsByTagName("iframe")[0];
 			setTimeout(function(){
 				ifr.contentWindow.document.designMode = "On";
-				ifr.contentWindow.focus();
+				//ifr.contentWindow.focus();
 			}, 10)			
 	</script>	
 </html>

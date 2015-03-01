@@ -5,6 +5,7 @@ set /p a=
 
 if %a% == 1 (goto PULL)
 if %a% == 2 (goto PUSH)
+exit
 
 
 :PULL
