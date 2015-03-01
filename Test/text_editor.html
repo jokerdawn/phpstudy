@@ -6,11 +6,10 @@
 		<script type="text/javascript">
 		function transfer1(){
 			var orgtext = document.getElementById('origin').value;
-			document.getElementById("real").contentWindow.document.body.innerText = ""; //清空原内容
-			document.getElementById("real").contentDocument.write(orgtext);
+			document.getElementById("real").innerHTML = orgtext;
 		}
 		function transfer2(){
-			var realtext = document.getElementById("real").contentDocument.getElementsByTagName('body')[0].innerHTML;
+			var realtext = document.getElementById("real").innerHTML;
 			document.getElementById('origin').value = realtext;
 		}
 		function addtag(tstart,tend){
@@ -28,13 +27,18 @@
 				textarea.value = tValue.substring(0, rangeData.start)+tstart+tValue.substring(rangeData.start,rangeData.end)+tend+tValue.substring(rangeData.end);
 			}
 		}
+		function setFontStyle(obj)
+		{
+			document.execCommand(obj.value,false,null);
+		}
 		</script>
  	</head>
  	<body>
 	 	<div>
 	 		<div style = 'float:right'>
-				<iframe frameborder="1" srcdoc = '' style="height: 330px;" id = 'real' ></iframe>
+				<div id="real" contenteditable="true" style="width:400px;min-height:400px;border:2px dashed #ccc"></div>
 				<button onclick="transfer2();">转换2</button>
+				<button onclick="document.execCommand('bold',false,null);">粗体</button>
 			</div>
 			<div>
 				<textarea id ='origin' style = 'width:400px;height:400px'></textarea>
@@ -43,11 +47,4 @@
 			</div>
 		</div>
  	</body>
- 	<script>
-			var ifr = document.getElementsByTagName("iframe")[0];
-			setTimeout(function(){
-				ifr.contentWindow.document.designMode = "On";
-				//ifr.contentWindow.focus();
-			}, 10)			
-	</script>	
 </html>
