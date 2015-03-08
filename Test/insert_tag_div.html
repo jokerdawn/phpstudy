@@ -96,4 +96,13 @@
 		return rang;
 	}
 
+	function remove_tag(stag,etag){  //一层嵌套，结尾为一层嵌套的结束标签 无标签测试失败
+		sel = selection();
+		str1 = sel.anchorNode.parentNode.parentNode.outerHTML;
+		str2 = sel.anchorNode.parentNode.outerHTML;
+		str3 = str1.substring(0,str2.length-(str2.length+4));
+		str4 = str3+'</i>'+str2+'<i>';
+		sel.anchorNode.parentNode.parentNode.outerHTML = str4;
+	}
+
 </script>
