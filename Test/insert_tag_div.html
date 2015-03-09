@@ -96,16 +96,16 @@
 		return rang;
 	}
 
-	function remove_tag(stag,etag){  //一层嵌套，结尾为一层嵌套的结束标签 无标签测试失败
+/*	function remove_tag(stag,etag){  //一层嵌套，结尾为一层嵌套的结束标签 无标签测试失败
 		sel = selection();
 		str1 = sel.anchorNode.parentNode.parentNode.outerHTML;
 		str2 = sel.anchorNode.parentNode.outerHTML;
 		str3 = str1.substring(0,str2.length-(str2.length+4));
 		str4 = str3+'</i>'+str2+'<i>';
 		sel.anchorNode.parentNode.parentNode.outerHTML = str4;
-	}
+	}*/
 
-	function remove_tag2(sel,unwarp){
+	function remove_tag2(sel,unwarp){ //unwarp为需要去除的标签
 		for(var search = sel.anchorNode,i = j = 0,a = new Array(),tn = Id = "";tn != "DIV"&& Id != "reditor";i++) {
 			search = search.parentNode;
 			tn = search.tagName;
@@ -114,7 +114,7 @@
 				a[j] = tn;
 				j++;
 			}
-		}  //遍历所有父节点，寻找最顶端节点*/	
+		}  //遍历所有父节点，寻找最顶端节点,，并且提出需要去除的标签*/	
 
 		document.execCommand('removeFormat');
 
