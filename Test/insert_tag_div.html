@@ -105,10 +105,36 @@
 		sel.anchorNode.parentNode.parentNode.outerHTML = str4;
 	}
 
-/*	for(search = sel.anchorNode;tn = "DIV"&& Id = "reditor";) {
-		search = search.parentNode;
-		tn = search.tagName;
-		Id = search.id;
-	}*/   //遍历所有父节点，寻找最顶端节点
+	function remove_tag2(sel,unwarp){
+		for(var search = sel.anchorNode,i = j = 0,a = new Array(),tn = Id = "";tn != "DIV"&& Id != "reditor";i++) {
+			search = search.parentNode;
+			tn = search.tagName;
+			Id = search.id;
+			if(tn != unwarp&&tn != "DIV"){
+				a[j] = tn;
+				j++;
+			}
+		}  //遍历所有父节点，寻找最顶端节点*/	
+
+		document.execCommand('removeFormat');
+
+		for (c=0; c< j ; c++) {
+			Manager.insertTAG(a[c]);
+		};
+	}
+
+
+
+/*	if(i == 0){
+		var index = sel.anchorNode;
+		index = index.parentNode;
+	}
+	else {
+		for(var index = sel.anchorNode,c = 0;c < i;++c){
+			index = index.parentNode;
+		} //找到嵌套的顶端节点
+	}*/
+
+
 
 </script>
