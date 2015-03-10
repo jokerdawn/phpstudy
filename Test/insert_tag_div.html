@@ -96,14 +96,22 @@
 		return rang;
 	}
 
-/*	function remove_tag(stag,etag){  //一层嵌套，结尾为一层嵌套的结束标签 无标签测试失败
-		sel = selection();
-		str1 = sel.anchorNode.parentNode.parentNode.outerHTML;
-		str2 = sel.anchorNode.parentNode.outerHTML;
-		str3 = str1.substring(0,str2.length-(str2.length+4));
-		str4 = str3+'</i>'+str2+'<i>';
-		sel.anchorNode.parentNode.parentNode.outerHTML = str4;
-	}*/
+	function remove_sametag(etag,stag,rtn){  //例子：有一段斜体，我把输入光标指到斜体，无需选择区域，使用这个功能，这段斜体都会消失。但其他样式不受影响。
+		for (var search = sel.anchorNode,i = 0,tn = Id = ""; tn != rtn ; i++) {
+			search = search.parentNode;
+			tn = search.tagName;
+			Id = search.id;
+		};
+
+		for (var index = sel.anchorNode,c = 0;c<i;c++) {
+			index = index.parentNode;
+		}
+
+		str1 = index.outerHTML;
+		str2 = index.innerHTML;
+		str3 = str1.split(str2);
+		index.outerHTML = str3[0]+etag+str2+stag+str3[1];
+	}
 
 	function remove_tag2(sel,unwarp){ //unwarp为需要去除的标签
 		for(var search = sel.anchorNode,i = j = 0,a = new Array(),tn = Id = "";tn != "DIV"&& Id != "reditor";i++) {
@@ -114,7 +122,7 @@
 				a[j] = tn;
 				j++;
 			}
-		}  //遍历所有父节点，寻找最顶端节点,，并且提出需要去除的标签*/	
+		}; //遍历所有父节点，寻找最顶端节点,，并且排除需要去除的标签*/	
 
 		document.execCommand('removeFormat');
 
