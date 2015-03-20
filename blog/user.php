@@ -46,7 +46,6 @@
 			   	top:12%;
 			   	left:22%;
 			    width:56%;
-			    height: 90%;
 			}
 			#head {
 				border: 1px solid black;

@@ -106,7 +106,7 @@
 					</div>		
 				</div>
 				<div id = 'page-content'><?php echo $content ;?></div>
-				<div id = 'page-tag'><textarea id ='abc'><?php echo '标签：'.$tag?></textarea></div>
+				<div id = 'page-tag'><?php echo '标签：'.$tag?></div>
 				<div id = 'page-date' ><?php echo '最后编辑时间：'.$edate ;?></div>
 			</div>
 		</div>	
