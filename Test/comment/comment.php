@@ -34,6 +34,10 @@
 			}
 		}
 
-		
+		function read($dbindex){
+			$sql = "SELECT * FROM c_comment ";
+			$result = $mysqli_fetch_array($dbindex,$sql);
+			
+		}
 	}
 ?>
