@@ -1,0 +1,25 @@
+<html>
+	
+	<script type="text/javascript"> 
+		req = new XMLHttpRequest;
+
+		function b(){
+			var value = document.test.input.value;
+			var url = '2.php?input='+value;
+			req.open("GET",url,true);
+			req.onreadystatechange = a();
+			req.send();   
+		}
+		
+		function a(){
+
+		}
+	</script>
+
+	<form method="get" name = 'test'>
+		<input type = "text" name = "input" value = 'test'/>
+		<button onclick = 'b();'>test</button>
+	</form>
+
+
+</html>
