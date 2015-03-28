@@ -3,12 +3,15 @@
 	var req = new XMLHttpRequest(); //new an XMLHTTPrequest
 
 	function trans(){
-		var origin = document.getElementById('origin').value.replace(/\r/ig, "</br>").replace(/\n/ig, "</br>"); ;
+		var origin = document.getElementById('origin').value.replace(/\r/ig, "</br>").replace(/\n/ig, "</br>");
+		var end_time = document.getElementById('end_time').value;
+		var sendvar = "content="+origin+'&endtime='+end_time;
 
-		var url = "trans.php?content="+origin;
-		req.open('GET',url,true);
+		var url = "trans.php";
+		req.open('POST',url,true);
+		req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		req.onreadystatechange = output;
-		req.send();
+		req.send(sendvar);
 	}
 
 	function output(){    //a standard AJAX module
@@ -20,10 +23,11 @@
 
 </script>
 <body>
-	<form method = 'GET' >
+	<form method = 'POST' >
 		<textarea id = 'origin' style = 'resize:none;width:35%;height:300px;border:1px solid gray;float:left'></textarea>		
 	</form>
 	<div id = 'trans' style = 'width:35%;height:300px;float:right;overflow-y:scroll;border:1px solid black'></div>
 	<button onclick="trans()">trans</button>
+	endtime:<input type = 'TEXT' id = 'end_time'/>
 </body>
 </html>
